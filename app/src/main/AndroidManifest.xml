@@ -23,7 +23,10 @@
 
         <activity android:name=".AdsActivity"/>
         <activity android:name=".MainActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"/>
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            />
+        <activity android:name=".SystemVideoPlayer" android:screenOrientation="landscape"/>
+        <activity android:name=".Test"/>
 
 
     </application>

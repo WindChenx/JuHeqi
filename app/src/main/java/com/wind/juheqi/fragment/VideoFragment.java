@@ -34,6 +34,7 @@ import android.widget.TextView;
 import com.wind.juheqi.MainActivity;
 import com.wind.juheqi.R;
 
+import com.wind.juheqi.SystemVideoPlayer;
 import com.wind.juheqi.domain.MediaItem;
 
 import com.wind.juheqi.uitls.Utils;
@@ -67,7 +68,7 @@ public class VideoFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 MediaItem mediaItem=mediaItems.get(position);
-                Intent intent=new Intent();
+                Intent intent=new Intent(context,SystemVideoPlayer.class);
                 intent.setDataAndType(Uri.parse(mediaItem.getData()),"video/*");
                 context.startActivity(intent);
             }
