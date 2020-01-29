@@ -3,6 +3,7 @@
 
 **目前它是这个样子的**
 
+![](https://github.com/wind2048/JuHeqi/blob/master/image/2.PNG?raw=true)
 
 ***
 
