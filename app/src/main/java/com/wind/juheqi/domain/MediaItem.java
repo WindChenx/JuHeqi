@@ -1,10 +1,42 @@
 package com.wind.juheqi.domain;
 
-public class MediaItem {
+import java.io.Serializable;
+
+public class MediaItem implements Serializable {
     private String name;
     private long duration;
     private long size;
     private String data;
+    private String imageUrl;
+    private String desc;
+
+    public String getArtist() {
+        return Artist;
+    }
+
+    public void setArtist(String artist) {
+        Artist = artist;
+    }
+
+    private String Artist;
+
+
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 
     public String getName() {
         return name;

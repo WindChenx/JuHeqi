@@ -4,7 +4,6 @@ package com.wind.juheqi.fragment;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -13,28 +12,19 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.telecom.TelecomManager;
 import android.text.format.Formatter;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.wind.juheqi.MainActivity;
 import com.wind.juheqi.R;
 
-import com.wind.juheqi.SystemVideoPlayer;
+import com.wind.juheqi.activity.SystemVideoPlayer;
 import com.wind.juheqi.domain.MediaItem;
 
 import com.wind.juheqi.uitls.Utils;
@@ -67,9 +57,17 @@ public class VideoFragment extends BaseFragment {
         lv_video_pager.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                MediaItem mediaItem=mediaItems.get(position);
+
+//传单个视频地址
+//                Intent intent=new Intent(context,SystemVideoPlayer.class);
+//                intent.setDataAndType(Uri.parse(mediaItem.getData()),"video/*");
+                //传视频列表
                 Intent intent=new Intent(context,SystemVideoPlayer.class);
-                intent.setDataAndType(Uri.parse(mediaItem.getData()),"video/*");
+
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("videoList",mediaItems);
+                intent.putExtras(bundle);
+                intent.putExtra("position",position);
                 context.startActivity(intent);
             }
         });
@@ -179,6 +177,8 @@ isGrantExternalRW((Activity) context);
                     }
                     cursor.close();
                 }
+//                ScannerAnsyTask ansyTask=new ScannerAnsyTask();
+//                ansyTask.execute();
                 handler.sendEmptyMessage(0);
 
             }
