@@ -9,6 +9,10 @@
 
 **我也觉得它很丑**
 
+![](https://github.com/wind2048/JuHeqi/blob/master/image/u=1896662133,3845373604&fm=26&gp=0.jpg?raw=true)
+
 **不过不久它会变得好看的**
+
+![](https://github.com/wind2048/JuHeqi/blob/master/image/u=3781637031,3333504652&fm=26&gp=0.jpg?raw=true)
 
 
