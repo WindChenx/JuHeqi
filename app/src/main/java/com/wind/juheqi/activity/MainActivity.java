@@ -1,24 +1,20 @@
 package com.wind.juheqi.activity;
 
-import android.Manifest;
 import android.app.Activity;
-import android.content.pm.PackageManager;
-import android.os.Build;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
+import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 
 import com.wind.juheqi.R;
 import com.wind.juheqi.fragment.AudioFragment;
 import com.wind.juheqi.fragment.BaseFragment;
-import com.wind.juheqi.fragment.NetAudioFragment;
+import com.wind.juheqi.fragment.MyFragment;
 import com.wind.juheqi.fragment.NetVideoFragment;
 import com.wind.juheqi.fragment.VideoFragment;
 
@@ -31,6 +27,7 @@ public class MainActivity extends FragmentActivity {
     private ArrayList<BaseFragment> baseFragments;
     private Fragment lastFragment;//上次的fragment
     private Activity context;
+    private TextView textView;
 
     /**
      * 页面对应的位置
@@ -41,11 +38,19 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        textView=findViewById(R.id.search);
 
         rg_main=findViewById(R.id.rg_main);
 
         
         initFragment();
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,SearchActivity.class));
+                finish();
+            }
+        });
         rg_main.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
         rg_main.check(R.id.rb_video);
 
@@ -57,7 +62,7 @@ public class MainActivity extends FragmentActivity {
         baseFragments.add(new VideoFragment());
         baseFragments.add(new AudioFragment());
         baseFragments.add(new NetVideoFragment());
-        baseFragments.add(new NetAudioFragment());
+        baseFragments.add(new MyFragment());
     }
 
 

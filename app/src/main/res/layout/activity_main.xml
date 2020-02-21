@@ -21,12 +21,12 @@
            android:id="@+id/rb_video"
             style="@style/bottom_tab_style"
             android:drawableTop="@drawable/rb_video_selector"
-            android:text="本地视频"/>
+            android:text="首页"/>
         <RadioButton
             android:id="@+id/rb_audio"
             style="@style/bottom_tab_style"
             android:drawableTop="@drawable/rb_audio_selector"
-            android:text="本地音乐"
+            android:text="笑话"
 
             />
 
@@ -35,7 +35,7 @@
             android:id="@+id/rb_net_video"
             style="@style/bottom_tab_style"
             android:drawableTop="@drawable/rb_net_video_selector"
-            android:text="网络视频"
+            android:text="发现"
             />
 
 
@@ -44,7 +44,7 @@
             style="@style/bottom_tab_style"
             android:drawableTop="@drawable/rb_net_audio_selector"
 
-            android:text="网络音乐"
+            android:text="我的"
 
             />
 

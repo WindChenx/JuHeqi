@@ -19,85 +19,87 @@ import android.widget.Toast;
 import com.wind.juheqi.IMediaService;
 import com.wind.juheqi.R;
 import com.wind.juheqi.activity.AudioPlayer;
+import com.wind.juheqi.domain.LocalSong;
 import com.wind.juheqi.domain.MediaItem;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MediaService extends Service {
     public static final String OPEN_AUDIO = "com.wind.juheqi.OPEN_AUDIO";
     private IMediaService.Stub stub=new IMediaService.Stub() {
-      MediaService mediaService=MediaService.this;
-      @Override
-      public void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat, double aDouble, String aString) throws RemoteException {
+        MediaService mediaService=MediaService.this;
+        @Override
+        public void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat, double aDouble, String aString) throws RemoteException {
 
-      }
+        }
 
-      @Override
-      public void openAudio(int position) throws RemoteException {
+        @Override
+        public void openAudio(int position) throws RemoteException {
             mediaService.openAudio(position);
-      }
+        }
 
-      @Override
-      public void start() throws RemoteException {
+        @Override
+        public void start() throws RemoteException {
             mediaService.start();
-      }
+        }
 
-      @Override
-      public void pause() throws RemoteException {
+        @Override
+        public void pause() throws RemoteException {
             mediaService.pause();
-      }
+        }
 
-      @Override
-      public void next() throws RemoteException {
-          mediaService.next();
+        @Override
+        public void next() throws RemoteException {
+            mediaService.next();
 
-      }
+        }
 
-      @Override
-      public void pre() throws RemoteException {
+        @Override
+        public void pre() throws RemoteException {
             mediaService.pre();
-      }
+        }
 
-      @Override
-      public int getPlaymode() throws RemoteException {
-          return mediaService.getPlaymode();
-      }
+        @Override
+        public int getPlaymode() throws RemoteException {
+            return mediaService.getPlaymode();
+        }
 
-      @Override
-      public void setPlaymode(int playmode) throws RemoteException {
+        @Override
+        public void setPlaymode(int playmode) throws RemoteException {
             mediaService.setPlaymode(playmode);
-      }
+        }
 
-      @Override
-      public int getCurrentPosition() throws RemoteException {
-          return mediaService.getCurrentPosition();
-      }
+        @Override
+        public int getCurrentPosition() throws RemoteException {
+            return mediaService.getCurrentPosition();
+        }
 
-      @Override
-      public int getDuration() throws RemoteException {
-          return mediaService.getDuration();
-      }
+        @Override
+        public int getDuration() throws RemoteException {
+            return mediaService.getDuration();
+        }
 
-      @Override
-      public String getName() throws RemoteException {
-          return mediaService.getName();
-      }
+        @Override
+        public String getName() throws RemoteException {
+            return mediaService.getName();
+        }
 
-      @Override
-      public String getArtist() throws RemoteException {
-          return mediaService.getArtist();
-      }
+        @Override
+        public String getArtist() throws RemoteException {
+            return mediaService.getArtist();
+        }
 
-      @Override
-      public void seekTo(int seekto) throws RemoteException {
-          mediaService.seekTo(seekto);
-      }
+        @Override
+        public void seekTo(int seekto) throws RemoteException {
+            mediaService.seekTo(seekto);
+        }
 
-      @Override
-      public boolean isPlaying() throws RemoteException {
-          return mediaService.isPlaying();
-      }
+        @Override
+        public boolean isPlaying() throws RemoteException {
+            return mediaService.isPlaying();
+        }
 
         @Override
         public void notifyChange(String action) throws RemoteException {
@@ -141,7 +143,7 @@ public class MediaService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-      getData();
+        getData();
 
     }
 
@@ -303,7 +305,7 @@ public class MediaService extends Service {
         intent.putExtra("Notification",true);//从状态栏进入音乐播放页面
         PendingIntent pi = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
         Notification.Builder botification = new Notification.Builder(this);
-                botification.setSmallIcon(R.drawable.notification_music_playing)
+        botification.setSmallIcon(R.drawable.notification_music_playing)
                 .setContentTitle("321音乐")
                 .setContentText("正在播放:"+getName())
                 .setContentIntent(pi);

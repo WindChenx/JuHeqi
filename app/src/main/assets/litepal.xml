@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="VideoList"/>
+    <version value="1"/>
+    <list>
+        <mapping class="com.wind.juheqi.domain.DownloadVideo"/>
+        <mapping class="com.wind.juheqi.domain.HistoryVideo"/>
+        <mapping class="com.wind.juheqi.domain.HistorySong"/>
+        <mapping class="com.wind.juheqi.domain.LocalVideo"/>
+        <mapping class="com.wind.juheqi.domain.LocalSong"/>
+        <mapping class="com.wind.juheqi.domain.Song"/>
+
+    </list>
+</litepal>

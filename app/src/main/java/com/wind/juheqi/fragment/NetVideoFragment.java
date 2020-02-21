@@ -150,7 +150,7 @@ public class NetVideoFragment extends BaseFragment  {
                             }
                         });
 
-  }
+        }
 
 
 

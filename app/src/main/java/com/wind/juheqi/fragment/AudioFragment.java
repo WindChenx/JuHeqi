@@ -26,10 +26,12 @@ import android.widget.TextView;
 import com.wind.juheqi.R;
 import com.wind.juheqi.activity.AudioPlayer;
 import com.wind.juheqi.activity.SystemVideoPlayer;
+import com.wind.juheqi.domain.LocalSong;
 import com.wind.juheqi.domain.MediaItem;
 import com.wind.juheqi.uitls.Utils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class AudioFragment extends BaseFragment {
@@ -39,6 +41,7 @@ public class AudioFragment extends BaseFragment {
     private ProgressBar pb_loading;
     private ArrayList<MediaItem> mediaItems;
     private Utils utils;
+    private List<LocalSong> localSongslist;
 
 
 
