@@ -84,5 +84,6 @@ interface IMediaService {
 
             	    boolean isPlaying();
             	    void notifyChange(String action);
+            	    void startOnline();
 
 }

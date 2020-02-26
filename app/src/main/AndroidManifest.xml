@@ -50,6 +50,7 @@
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".activity.SearchActivity"/>
+        <activity android:name=".activity.onLinePlay"></activity>
 
         <meta-data
             android:name="com.google.android.actions"

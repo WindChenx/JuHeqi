@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.RemoteException;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,8 +24,14 @@ import android.widget.Toast;
 import com.wind.juheqi.IMediaService;
 import com.wind.juheqi.R;
 
+import com.wind.juheqi.domain.MediaItem;
+import com.wind.juheqi.domain.Song;
 import com.wind.juheqi.service.MediaService;
 import com.wind.juheqi.uitls.Utils;
+
+import org.greenrobot.eventbus.EventBus;
+
+import java.util.ArrayList;
 
 public class AudioPlayer extends Activity implements View.OnClickListener {
 
@@ -45,6 +52,8 @@ public class AudioPlayer extends Activity implements View.OnClickListener {
     private boolean notification;
     private  MyReceiver receiver;
     private Utils utils;
+    private Song song;
+    private ArrayList<Song> songs;
 
     private ServiceConnection con=new ServiceConnection() {
         @Override
@@ -78,6 +87,7 @@ public class AudioPlayer extends Activity implements View.OnClickListener {
         findViews();
         getData();
 
+
         bindAndStartService();
 
 
@@ -85,11 +95,18 @@ public class AudioPlayer extends Activity implements View.OnClickListener {
 
     private void initData() {
         utils=new Utils();
+        //注册广播
         receiver =new MyReceiver();
         IntentFilter intentfilter = new IntentFilter();
         intentfilter.addAction(MediaService.OPEN_AUDIO);//监听打开音乐成功的动作
         registerReceiver(receiver, intentfilter);
+
+//        EventBus.getDefault().register(this);
     }
+
+// public void  onEvent()(Song song){
+//
+//    }
 
     private Handler handler = new Handler(){
         @Override
@@ -226,9 +243,18 @@ public class AudioPlayer extends Activity implements View.OnClickListener {
         if(!notification){
             //从列表来的
             position = getIntent().getIntExtra("position", 0);
+        }else {
+            getOnlineData();
         }
 
     }
+
+private void    getOnlineData(){
+       songs= (ArrayList<Song>) getIntent().getSerializableExtra("searchsongList");
+       position=getIntent().getIntExtra("position",0);
+
+    }
+
 
     private void bindAndStartService() {
         Intent intent=new Intent(this,MediaService.class);

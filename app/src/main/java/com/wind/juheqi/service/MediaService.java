@@ -21,6 +21,12 @@ import com.wind.juheqi.R;
 import com.wind.juheqi.activity.AudioPlayer;
 import com.wind.juheqi.domain.LocalSong;
 import com.wind.juheqi.domain.MediaItem;
+import com.wind.juheqi.domain.SearchSong;
+import com.wind.juheqi.domain.Song;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,6 +34,8 @@ import java.util.List;
 
 public class MediaService extends Service {
     public static final String OPEN_AUDIO = "com.wind.juheqi.OPEN_AUDIO";
+    private  MediaPlayer mediaPlayer=new MediaPlayer();
+    private String url;
     private IMediaService.Stub stub=new IMediaService.Stub() {
         MediaService mediaService=MediaService.this;
         @Override
@@ -106,8 +114,13 @@ public class MediaService extends Service {
             mediaService.notifyChange(action);
         }
 
-
+        @Override
+        public void startOnline() {
+            mediaService.onLineStart();
+        }
     };
+
+
 
 
     /**
@@ -322,6 +335,29 @@ public class MediaService extends Service {
 
         n.flags = Notification.FLAG_ONGOING_EVENT;//点击不消失
         manager.notify(1,n);
+
+
+    }
+
+
+@Subscribe(threadMode = ThreadMode.MAIN)
+public void Event(Song searchSong){
+      url=  searchSong.getUrl();
+}
+
+    private void onLineStart() {
+        EventBus.getDefault().register(this);
+        mediaplayer.reset();
+        try {
+            mediaplayer.setDataSource(url);
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }

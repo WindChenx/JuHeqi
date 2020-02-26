@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.wind.juheqi.R;
+import com.wind.juheqi.fragment.ContentFragment;
 
 public class SearchActivity extends FragmentActivity {
     private Button back;
@@ -31,6 +33,24 @@ public class SearchActivity extends FragmentActivity {
                                     }
                                 }
         );
+        search_edit.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                search_edit.setCursorVisible(true);
+            }
+
+        }));
+
+        search_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                search_edit.setCursorVisible(false);
+                if(search_edit.getText().toString().trim().length()==0){
+                    search_edit.setText(search_edit.getHint().toString().trim());
+                }
+                replaceFragment(ContentFragment.newInstance(search_edit.getText().toString()));
+            }
+        });
 //        replaceFragment(new SearchHistoryFragment());
 
     }

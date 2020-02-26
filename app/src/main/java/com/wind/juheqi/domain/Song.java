@@ -4,7 +4,7 @@ import org.litepal.crud.LitePalSupport;
 
 import java.io.Serializable;
 
-public class Song extends LitePalSupport implements Serializable {
+public class Song implements Serializable {
     private long id;
     private String songId; //歌曲id
     private String qqId;//专属本地音乐，本地音乐在第三方音乐中的songId
@@ -20,7 +20,13 @@ public class Song extends LitePalSupport implements Serializable {
     private int listType; //歌曲列表类别,0表示当前没有列表，即可能在播放网络歌曲
     private boolean isDownload;//是否为下载的歌曲
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getSongId() {
         return songId;
