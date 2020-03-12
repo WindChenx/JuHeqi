@@ -10,7 +10,8 @@
 * 音乐播放控制
 
 
-**目前UI界面**
+
+### 目前UI界面
 
 ![](https://github.com/wind2048/JuHeqi/blob/master/image/1.PNG)
 ![](https://github.com/wind2048/JuHeqi/blob/master/image/2.gif)
